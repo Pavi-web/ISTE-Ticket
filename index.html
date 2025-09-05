@@ -3,7 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Event Registration</title>
+    <title>ISTE CEAL</title>
+    <link rel="icon" href="image.png" type="image/png" sizes="16x16">
     <style>
       @import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap");
 
@@ -37,6 +38,22 @@
             transparent 50%
           ),
           linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #0a0a0a 100%);
+      }
+
+      .iste-title{
+        text-align: center;
+        position: absolute;
+        bottom: 290px;
+        font-size: 3rem;
+        font-weight: 700;
+        letter-spacing: 4px;
+        color: #ff3366;
+        background: rgba(255, 51, 102, 0.1);
+        padding: 10px 20px;
+        border: 1px solid rgba(255, 51, 102, 0.3);
+        clip-path: polygon(10px 0, 100% 0, calc(100% - 10px) 100%, 0 100%);
+        white-space: nowrap;
+        left: -195px;
       }
 
       .left-section {
@@ -634,7 +651,8 @@
       <div class="corner-decoration bottom-left"></div>
       <div class="corner-decoration bottom-right"></div>
 
-      <!-- Left Section - Public Speaking -->
+
+
       <div class="left-section">
         <h1 class="section-title">PUBLIC</h1>
         <h2 class="section-subtitle">SPEAKING</h2>
@@ -651,6 +669,7 @@
         <button class="register-btn" onclick="showRegistration()">
           REGISTER
         </button>
+        <h1 class="iste-title">ISTE CEAL Presents</h1>
         <div class="date-info">13th SEPT</div>
       </div>
     </div>
