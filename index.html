@@ -800,26 +800,19 @@
     </style>
   </head>
   <body>
-    <!-- Main Landing Page -->
     <div class="main-container" id="mainPage">
-      <!-- Decorative corner elements -->
       <div class="corner-decoration top-left"></div>
       <div class="corner-decoration top-right"></div>
       <div class="corner-decoration bottom-left"></div>
       <div class="corner-decoration bottom-right"></div>
-
       <div class="left-section">
         <h1 class="section-title">PUBLIC</h1>
         <h2 class="section-subtitle">SPEAKING</h2>
       </div>
-
-      <!-- Right Section - Python Basics -->
       <div class="right-section">
         <h1 class="section-title">PYTHON</h1>
         <h2 class="section-subtitle">BASICS</h2>
       </div>
-
-      <!-- Central Register Button -->
       <div class="register-btn-container">
         <button class="register-btn" onclick="showRegistration()">
           REGISTER
@@ -828,15 +821,10 @@
       </div>
       <div class="date-info">13th SEPT</div>
     </div>
-
-    <!-- Registration Page -->
     <div class="registration-page" id="registrationPage">
       <button class="back-btn" onclick="showMainPage()">← Back to Main</button>
-
       <div class="form-container">
         <h2 class="form-title">Event Registration</h2>
-
-        <!-- Info Box -->
         <div class="info-box">
           <h3>📧 Registration Method</h3>
           <p>
@@ -852,7 +840,6 @@
           method="POST"
           id="registrationForm"
         >
-          <!-- Hidden fields for tracking -->
           <input
             type="hidden"
             name="_subject"
@@ -860,22 +847,18 @@
           />
           <input type="hidden" name="_next" value="#success" />
           <input type="hidden" name="_captcha" value="false" />
-
           <div class="form-group">
             <label for="name">Full Name *</label>
             <input type="text" id="name" name="name" required />
           </div>
-
           <div class="form-group">
             <label for="email">Email Address *</label>
             <input type="email" id="email" name="_replyto" required />
           </div>
-
           <div class="form-group">
             <label for="phone">Phone Number *</label>
             <input type="tel" id="phone" name="phone" required />
           </div>
-
           <div class="membership-section">
             <div class="form-group">
               <label for="isteMembership">Do you have ISTE Membership? *</label>
@@ -890,7 +873,6 @@
                 <option value="no">No, I don't have ISTE Membership</option>
               </select>
             </div>
-
             <div
               class="form-group"
               id="membershipIdField"
@@ -898,6 +880,19 @@
             >
               <label for="membershipId">ISTE Membership ID *</label>
               <input type="text" id="membershipId" name="membership_id" />
+            </div>
+
+            <div class="form-group" id="firstYearField" style="display: none">
+              <label for="firstYear">Are you a first year student? *</label>
+              <select
+                id="firstYear"
+                name="first_year_student"
+                onchange="toggleMembershipId()"
+              >
+                <option value="">Select an option</option>
+                <option value="yes">Yes, I am a first year student</option>
+                <option value="no">No, I am not a first year student</option>
+              </select>
             </div>
           </div>
 
@@ -964,7 +959,6 @@
             with further details about the event.
           </p>
         </div>
-
         <div class="error-message" id="errorMessage">
           <h3>❌ Registration Failed</h3>
           <p id="errorText">
@@ -978,21 +972,37 @@
       function showRegistration() {
         document.getElementById("mainPage").style.display = "none";
         document.getElementById("registrationPage").style.display = "block";
-
-        // Set registration date
         document.getElementById("registrationDate").value =
           new Date().toISOString();
       }
-
       function showMainPage() {
         document.getElementById("mainPage").style.display = "flex";
         document.getElementById("registrationPage").style.display = "none";
         resetForm();
       }
 
+      function toggleMembershipId() {
+        const firstYear = document.getElementById("firstYear").value;
+        const membershipIdField = document.getElementById("membershipIdField");
+        const membershipIdInput = document.getElementById("membershipId");
+
+        if (firstYear === "yes") {
+          membershipIdField.style.display = "none";
+          membershipIdInput.required = false;
+          membershipIdInput.value = "";
+        } else if (firstYear === "no") {
+          membershipIdField.style.display = "block";
+          membershipIdInput.required = true;
+        } else {
+          membershipIdField.style.display = "none";
+          membershipIdInput.required = false;
+        }
+      }
+
       function resetForm() {
         document.getElementById("registrationForm").reset();
         document.getElementById("membershipIdField").style.display = "none";
+        document.getElementById("firstYearField").style.display = "none";
         document.getElementById("paymentSection").style.display = "none";
         document.getElementById("successMessage").style.display = "none";
         document.getElementById("errorMessage").style.display = "none";
@@ -1003,49 +1013,48 @@
         submitBtn.textContent = "Complete Registration";
         submitBtn.disabled = false;
       }
-
       function toggleMembershipFields() {
         const membership = document.getElementById("isteMembership").value;
         const membershipIdField = document.getElementById("membershipIdField");
+        const firstYearField = document.getElementById("firstYearField");
         const paymentSection = document.getElementById("paymentSection");
         const membershipIdInput = document.getElementById("membershipId");
+        const firstYearInput = document.getElementById("firstYear");
         const paymentLinkInput = document.getElementById("paymentLink");
 
         if (membership === "yes") {
-          membershipIdField.style.display = "block";
+          membershipIdField.style.display = "none";
+          firstYearField.style.display = "block";
           paymentSection.style.display = "none";
-          membershipIdInput.required = true;
+          firstYearInput.required = true;
           paymentLinkInput.required = false;
+          membershipIdInput.required = false;
+          firstYearInput.value = "";
         } else if (membership === "no") {
           membershipIdField.style.display = "none";
+          firstYearField.style.display = "none";
           paymentSection.style.display = "block";
           membershipIdInput.required = false;
+          firstYearInput.required = false;
           paymentLinkInput.required = true;
         } else {
           membershipIdField.style.display = "none";
+          firstYearField.style.display = "none";
           paymentSection.style.display = "none";
           membershipIdInput.required = false;
+          firstYearInput.required = false;
           paymentLinkInput.required = false;
         }
       }
-
-      // Handle form submission
       document
         .getElementById("registrationForm")
         .addEventListener("submit", function (e) {
           const submitBtn = document.getElementById("submitBtn");
           const loadingSpinner = document.getElementById("loadingSpinner");
-
-          // Show loading state
           submitBtn.textContent = "Sending Registration...";
           submitBtn.disabled = true;
           loadingSpinner.style.display = "block";
-
-          // The form will submit naturally to Formspree
-          // Formspree will handle the redirect or show confirmation
         });
-
-      // Check URL for success parameter (if using redirect)
       window.addEventListener("load", function () {
         if (window.location.hash === "#success") {
           showRegistration();
@@ -1053,8 +1062,6 @@
           document.getElementById("successMessage").style.display = "block";
         }
       });
-
-      // Glitch effect animation
       setInterval(() => {
         const titles = document.querySelectorAll(".section-title");
         titles.forEach((title) => {
