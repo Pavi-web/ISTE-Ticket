@@ -1,82 +1,1087 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Registration Closed</title>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ISTE CEAL</title>
+    <link rel="icon" href="image.png" type="image/png" sizes="16x16" />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap");
 
-    body {
-      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      min-height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      color: #fff;
-      padding: 20px;
-    }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
 
-    .closed-container {
-      background: linear-gradient(135deg, #dc2626, #b91c1c);
-      padding: 40px;
-      border-radius: 15px;
-      box-shadow: 0 0 40px rgba(220, 53, 69, 0.7);
-      max-width: 600px;
-      width: 90%;
-      animation: shake 0.6s ease-in-out;
-    }
+      body {
+        font-family: "Orbitron", monospace;
+        overflow-x: hidden;
+        background: #000;
+        color: #fff;
+        line-height: 1.4;
+      }
 
-    .closed-container h1 {
-      font-size: 2.5rem;
-      margin-bottom: 20px;
-      text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5);
-    }
+      .developer-watermark {
+        position: fixed;
+        bottom: -4px;
+        right: 20px;
+        font-family: "Orbitron", monospace;
+        font-size: 0.8rem;
+        color: rgba(255, 255, 255, 0.3);
+        background: rgba(0, 0, 0, 0.2);
+        padding: 5px 10px;
+        border-radius: 3px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        z-index: 1000;
+        transition: all 0.3s ease;
+        backdrop-filter: blur(5px);
+        text-decoration: none;
+        letter-spacing: 1px;
+        font-weight: 400;
+      }
 
-    .closed-container p {
-      font-size: 1.2rem;
-      margin-bottom: 10px;
-      line-height: 1.6;
-    }
+      .developer-watermark:hover {
+        color: rgba(0, 204, 255, 0.8);
+        border-color: rgba(0, 204, 255, 0.3);
+        text-shadow: 0 0 10px rgba(0, 204, 255, 0.5);
+      }
 
-    .highlight {
-      font-size: 1.3rem;
-      font-weight: bold;
-      background: rgba(255, 255, 255, 0.2);
-      padding: 12px 20px;
-      border-radius: 10px;
-      border: 2px dashed rgba(255, 255, 255, 0.6);
-      display: inline-block;
-      margin-top: 15px;
-    }
+      /* Make it responsive */
+      @media (max-width: 768px) {
+        .developer-watermark {
+          bottom: 15px;
+          right: 15px;
+          font-size: 0.7rem;
+          padding: 4px 8px;
+        }
+      }
 
-    @keyframes shake {
-      0%, 100% { transform: translateX(0); }
-      20%, 60% { transform: translateX(-10px); }
-      40%, 80% { transform: translateX(10px); }
-    }
+      .payment-icon {
+        width: 450px;
+        height: 400px;
+      }
 
-    @media (max-width: 600px) {
-      .closed-container h1 {
+      /* Main Split Container */
+      .main-container {
+        height: 100vh;
+        display: flex;
+        position: relative;
+        background: radial-gradient(
+            circle at 25% 50%,
+            rgba(0, 102, 255, 0.3) 0%,
+            transparent 50%
+          ),
+          radial-gradient(
+            circle at 75% 50%,
+            rgba(255, 51, 102, 0.3) 0%,
+            transparent 50%
+          ),
+          linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #0a0a0a 100%);
+      }
+
+      .iste-title {
+        text-align: center;
+        position: absolute;
+        bottom: 35vh;
+        font-size: 3rem;
+        font-weight: 700;
+        letter-spacing: 4px;
+        color: #ff3366;
+        background: rgba(255, 51, 102, 0.1);
+        padding: 10px 20px;
+        border: 1px solid rgba(255, 51, 102, 0.3);
+        clip-path: polygon(10px 0, 100% 0, calc(100% - 10px) 100%, 0 100%);
+        white-space: nowrap;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+
+      .left-section {
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        overflow: hidden;
+        background: linear-gradient(
+          135deg,
+          rgba(0, 102, 255, 0.1) 0%,
+          transparent 100%
+        );
+        clip-path: polygon(0 0, 85% 0, 100% 100%, 0 100%);
+      }
+
+      .right-section {
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        overflow: hidden;
+        background: linear-gradient(
+          225deg,
+          rgba(255, 51, 102, 0.1) 0%,
+          transparent 100%
+        );
+        clip-path: polygon(15% 0, 100% 0, 100% 100%, 0 100%);
+      }
+
+      /* Cyberpunk Grid Effect */
+      .left-section::before,
+      .right-section::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-image: linear-gradient(
+            rgba(0, 255, 255, 0.03) 1px,
+            transparent 1px
+          ),
+          linear-gradient(90deg, rgba(0, 255, 255, 0.03) 1px, transparent 1px);
+        background-size: 30px 30px;
+        pointer-events: none;
+        animation: gridMove 20s linear infinite;
+      }
+
+      @keyframes gridMove {
+        0% {
+          transform: translate(0, 0);
+        }
+        100% {
+          transform: translate(30px, 30px);
+        }
+      }
+
+      /* Glowing borders */
+      .left-section::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 2px;
+        height: 100%;
+        background: linear-gradient(
+          180deg,
+          transparent 0%,
+          rgba(0, 255, 255, 0.8) 20%,
+          rgba(0, 102, 255, 1) 50%,
+          rgba(0, 255, 255, 0.8) 80%,
+          transparent 100%
+        );
+        box-shadow: 0 0 20px rgba(0, 102, 255, 0.8);
+        animation: pulse 2s ease-in-out infinite alternate;
+      }
+
+      .right-section::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 2px;
+        height: 100%;
+        background: linear-gradient(
+          180deg,
+          transparent 0%,
+          rgba(255, 102, 204, 0.8) 20%,
+          rgba(255, 51, 102, 1) 50%,
+          rgba(255, 102, 204, 0.8) 80%,
+          transparent 100%
+        );
+        box-shadow: 0 0 20px rgba(255, 51, 102, 0.8);
+        animation: pulse 2s ease-in-out infinite alternate;
+      }
+
+      @keyframes pulse {
+        from {
+          opacity: 0.6;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      .section-title {
+        font-size: 4.5rem;
+        font-weight: 900;
+        text-transform: uppercase;
+        letter-spacing: 12px;
+        margin-bottom: 0.5rem;
+        position: relative;
+        text-shadow: 0 0 30px currentColor;
+        animation: titleGlow 3s ease-in-out infinite alternate;
+      }
+
+      .left-section .section-title {
+        color: #00ccff;
+        transform: perspective(500px) rotateX(15deg) skewX(-5deg);
+      }
+
+      .right-section .section-title {
+        color: #ff3366;
+        transform: perspective(500px) rotateX(15deg) skewX(5deg);
+      }
+
+      @keyframes titleGlow {
+        from {
+          text-shadow: 0 0 30px currentColor;
+        }
+        to {
+          text-shadow: 0 0 50px currentColor, 0 0 80px currentColor;
+        }
+      }
+
+      .section-subtitle {
         font-size: 2rem;
+        text-transform: uppercase;
+        letter-spacing: 8px;
+        opacity: 0.9;
+        font-weight: 400;
+        transform: perspective(300px) rotateX(10deg);
+        text-shadow: 0 0 20px currentColor;
       }
-      .closed-container p {
+
+      .left-section .section-subtitle {
+        color: #66d9ff;
+      }
+
+      .right-section .section-subtitle {
+        color: #ff6699;
+      }
+
+      .date-info {
+        text-align: center;
+        position: absolute;
+        top: 65vh;
+        font-size: 1.8rem;
+        font-weight: 700;
+        letter-spacing: 4px;
+        color: #00ff88;
+        text-shadow: 0 0 30px #00ff88;
+        animation: dateFlicker 4s ease-in-out infinite;
+        background: rgba(0, 255, 136, 0.1);
+        padding: 10px 20px;
+        border: 1px solid rgba(0, 255, 136, 0.3);
+        clip-path: polygon(10px 0, 100% 0, calc(100% - 10px) 100%, 0 100%);
+        left: 50%;
+        transform: translateX(-50%);
+      }
+
+      @keyframes dateFlicker {
+        0%,
+        90%,
+        100% {
+          opacity: 1;
+        }
+        95% {
+          opacity: 0.7;
+        }
+      }
+
+      /* Central Register Button */
+      .register-btn-container {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 100;
+      }
+
+      .register-btn {
+        background: linear-gradient(45deg, #ff3366 0%, #00ccff 100%);
+        border: none;
+        padding: 25px 50px;
+        font-size: 1.8rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 4px;
+        color: white;
+        cursor: pointer;
+        border-radius: 0;
+        box-shadow: 0 0 40px rgba(255, 51, 102, 0.6),
+          0 0 80px rgba(0, 204, 255, 0.4),
+          inset 0 0 30px rgba(255, 255, 255, 0.1);
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+        clip-path: polygon(20px 0, 100% 0, calc(100% - 20px) 100%, 0 100%);
+        font-family: "Orbitron", monospace;
+      }
+
+      .register-btn::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 255, 255, 0.3),
+          transparent
+        );
+        transition: left 0.6s;
+      }
+
+      .register-btn::after {
+        content: "";
+        position: absolute;
+        inset: 2px;
+        background: linear-gradient(45deg, #ff3366 0%, #00ccff 100%);
+        clip-path: polygon(18px 0, 100% 0, calc(100% - 18px) 100%, 0 100%);
+        z-index: -1;
+      }
+
+      .register-btn:hover {
+        transform: scale(1.05) translateY(-3px);
+        box-shadow: 0 10px 60px rgba(255, 51, 102, 0.8),
+          0 10px 100px rgba(0, 204, 255, 0.6),
+          inset 0 0 40px rgba(255, 255, 255, 0.2);
+        text-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+      }
+
+      .register-btn:hover::before {
+        left: 100%;
+      }
+
+      /* Animated corner elements */
+      .corner-decoration {
+        position: absolute;
+        width: 100px;
+        height: 100px;
+        border: 2px solid;
+        clip-path: polygon(0 0, 50px 0, 50px 50px, 0 50px);
+      }
+
+      .corner-decoration.top-left {
+        top: 30px;
+        left: 30px;
+        border-color: #00ccff;
+        box-shadow: 0 0 20px rgba(0, 204, 255, 0.5);
+      }
+
+      .corner-decoration.top-right {
+        top: 30px;
+        right: 30px;
+        border-color: #ff3366;
+        box-shadow: 0 0 20px rgba(255, 51, 102, 0.5);
+        transform: rotate(90deg);
+      }
+
+      .corner-decoration.bottom-left {
+        bottom: 30px;
+        left: 30px;
+        border-color: #00ccff;
+        box-shadow: 0 0 20px rgba(0, 204, 255, 0.5);
+        transform: rotate(270deg);
+      }
+
+      .corner-decoration.bottom-right {
+        bottom: 30px;
+        right: 30px;
+        border-color: #ff3366;
+        box-shadow: 0 0 20px rgba(255, 51, 102, 0.5);
+        transform: rotate(180deg);
+      }
+
+      /* Registration Form Styles */
+      .registration-page {
+        display: none;
+        min-height: 100vh;
+        background: linear-gradient(135deg, #000 0%, #1a1a2e 50%, #16213e 100%);
+        padding: 2rem;
+        position: relative;
+      }
+
+      .registration-page::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: repeating-linear-gradient(
+          45deg,
+          transparent,
+          transparent 100px,
+          rgba(255, 51, 102, 0.03) 100px,
+          rgba(255, 51, 102, 0.03) 102px
+        );
+        pointer-events: none;
+      }
+
+      .form-container {
+        max-width: 600px;
+        margin: 0 auto;
+        background: rgba(255, 255, 255, 0.05);
+        padding: 3rem;
+        border-radius: 10px;
+        border: 1px solid rgba(255, 51, 102, 0.3);
+        box-shadow: 0 0 50px rgba(255, 51, 102, 0.2);
+        backdrop-filter: blur(10px);
+      }
+
+      .form-title {
+        text-align: center;
+        font-size: 2.5rem;
+        margin-bottom: 2rem;
+        color: #ff3366;
+        text-transform: uppercase;
+        letter-spacing: 3px;
+        text-shadow: 0 0 20px rgba(255, 51, 102, 0.5);
+        font-family: "Orbitron", monospace;
+      }
+
+      .form-group {
+        margin-bottom: 1.5rem;
+      }
+
+      .form-group label {
+        display: block;
+        margin-bottom: 0.5rem;
+        color: #0099ff;
+        font-weight: bold;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-family: "Orbitron", monospace;
+      }
+
+      .form-group input,
+      .form-group select,
+      .form-group textarea {
+        width: 100%;
+        padding: 15px;
+        border: 2px solid rgba(255, 51, 102, 0.3);
+        background: rgba(0, 0, 0, 0.5);
+        color: white;
+        border-radius: 5px;
         font-size: 1rem;
+        transition: all 0.3s ease;
+        font-family: "Orbitron", monospace;
       }
-    }
-  </style>
-</head>
-<body>
-  <div class="closed-container">
-    <h1>🚫 Registration Closed for Today</h1>
-    <p>We are not accepting registrations at this moment.</p>
-    <p class="highlight">Reopens Tomorrow at 9:00 AM</p>
-  </div>
-</body>
+
+      .form-group input:focus,
+      .form-group select:focus,
+      .form-group textarea:focus {
+        outline: none;
+        border-color: #ff3366;
+        box-shadow: 0 0 20px rgba(255, 51, 102, 0.5);
+      }
+
+      .membership-section {
+        background: rgba(0, 102, 255, 0.1);
+        padding: 1.5rem;
+        border-radius: 5px;
+        border: 1px solid rgba(0, 102, 255, 0.3);
+        margin: 1rem 0;
+      }
+
+      .payment-section {
+        display: none;
+        background: rgba(255, 51, 102, 0.1);
+        padding: 1.5rem;
+        border-radius: 5px;
+        border: 1px solid rgba(255, 51, 102, 0.3);
+        margin: 1rem 0;
+      }
+
+      .instructions {
+        font-size: 0.9rem;
+        color: #fff;
+        margin-bottom: 1rem;
+        opacity: 0.8;
+        line-height: 1.5;
+        font: 16px/1.5 Arial, sans-serif;
+      }
+
+      .submit-btn {
+        width: 100%;
+        padding: 20px;
+        background: linear-gradient(45deg, #ff3366, #0066ff);
+        border: none;
+        color: white;
+        font-size: 1.2rem;
+        font-weight: bold;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        margin-top: 2rem;
+        font-family: "Orbitron", monospace;
+      }
+
+      .submit-btn:hover:not(:disabled) {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 30px rgba(255, 51, 102, 0.5);
+      }
+
+      .submit-btn:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+      }
+
+      .back-btn {
+        background: rgba(255, 255, 255, 0.1);
+        border: 2px solid rgba(255, 255, 255, 0.3);
+        color: white;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-bottom: 2rem;
+        transition: all 0.3s ease;
+        font-family: "Orbitron", monospace;
+      }
+
+      .back-btn:hover {
+        background: rgba(255, 255, 255, 0.2);
+        border-color: rgba(255, 255, 255, 0.5);
+      }
+
+      .success-message {
+        display: none;
+        text-align: center;
+        padding: 2rem;
+        background: rgba(0, 255, 0, 0.1);
+        border: 2px solid rgba(0, 255, 0, 0.3);
+        border-radius: 10px;
+        margin-top: 2rem;
+        color: #00ff00;
+      }
+
+      .error-message {
+        display: none;
+        text-align: center;
+        padding: 2rem;
+        background: rgba(255, 0, 0, 0.1);
+        border: 2px solid rgba(255, 0, 0, 0.3);
+        border-radius: 10px;
+        margin-top: 2rem;
+        color: #ff0000;
+      }
+
+      .info-box {
+        background: rgba(0, 153, 255, 0.1);
+        border: 1px solid rgba(0, 153, 255, 0.3);
+        border-radius: 8px;
+        padding: 1.5rem;
+        margin: 2rem 0;
+        text-align: center;
+      }
+
+      .info-box h3 {
+        color: #0099ff;
+        margin-bottom: 1rem;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        font-family: "Orbitron", monospace;
+      }
+
+      .info-box p {
+        opacity: 0.9;
+        line-height: 1.6;
+      }
+
+      /* Loading Animation */
+      .loading-spinner {
+        display: none;
+        width: 40px;
+        height: 40px;
+        border: 4px solid rgba(255, 255, 255, 0.3);
+        border-top: 4px solid #ff3366;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+        margin: 20px auto;
+      }
+
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+
+      /* Responsive styles */
+      @media (min-width: 1025px) {
+        .date-info {
+          top: 65vh;
+          left: 50%;
+          transform: translateX(-50%);
+        }
+      }
+
+      @media (max-width: 1024px) {
+        .section-title {
+          font-size: 3.5rem;
+          letter-spacing: 8px;
+        }
+
+        .payment-icon {
+          width: 350px;
+          height: 300px;
+        }
+
+        .section-subtitle {
+          font-size: 1.8rem;
+          letter-spacing: 6px;
+        }
+
+        .register-btn {
+          padding: 20px 40px;
+          font-size: 1.5rem;
+        }
+
+        .iste-title {
+          font-size: 2.5rem;
+          bottom: 26vh;
+          left: 50%;
+          transform: translateX(-50%);
+        }
+
+        .date-info {
+          top: 65vh;
+          left: 50%;
+          transform: translateX(-50%);
+          font-size: 1.8rem;
+        }
+
+        .corner-decoration {
+          width: 80px;
+          height: 80px;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .main-container {
+          flex-direction: column;
+        }
+
+        .left-section,
+        .right-section {
+          width: 100%;
+          height: 50vh;
+          clip-path: none;
+        }
+
+        .payment-icon {
+          width: 350px;
+          height: 300px;
+        }
+
+        .left-section {
+          clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+        }
+
+        .right-section {
+          clip-path: polygon(0 15%, 100% 0, 100% 100%, 0 100%);
+        }
+
+        .section-title {
+          font-size: 2.5rem;
+          letter-spacing: 6px;
+        }
+
+        .section-subtitle {
+          font-size: 1.2rem;
+          letter-spacing: 4px;
+        }
+
+        .register-btn {
+          font-size: 1.2rem;
+          padding: 18px 35px;
+          letter-spacing: 2px;
+        }
+
+        .iste-title {
+          font-size: 2rem;
+          bottom: 40vh;
+          left: 50%;
+          transform: translateX(-50%);
+          padding: 8px 15px;
+        }
+
+        .date-info {
+          top: 85vh;
+          left: 50%;
+          transform: translateX(-50%);
+          font-size: 1.6rem;
+          padding: 8px 18px;
+        }
+
+        .corner-decoration {
+          width: 60px;
+          height: 60px;
+        }
+
+        .corner-decoration.top-left,
+        .corner-decoration.bottom-left {
+          left: 15px;
+        }
+
+        .corner-decoration.top-right,
+        .corner-decoration.bottom-right {
+          right: 15px;
+        }
+
+        .corner-decoration.top-left,
+        .corner-decoration.top-right {
+          top: 15px;
+        }
+
+        .corner-decoration.bottom-left,
+        .corner-decoration.bottom-right {
+          bottom: 15px;
+        }
+
+        .form-container {
+          padding: 2rem;
+          margin: 1rem;
+        }
+
+        .form-title {
+          font-size: 2rem;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .section-title {
+          font-size: 2rem;
+          letter-spacing: 4px;
+        }
+
+        .form-title {
+          font-size: 1.4rem;
+        }
+
+        .section-subtitle {
+          font-size: 1rem;
+          letter-spacing: 3px;
+        }
+
+        .register-btn {
+          font-size: 1rem;
+          padding: 15px 30px;
+          letter-spacing: 1px;
+        }
+
+        .payment-icon {
+          width: 160px;
+          height: 140px;
+        }
+
+        .iste-title {
+          font-size: 1.5rem;
+          bottom: 37vh;
+          left: 50%;
+          transform: translateX(-50%);
+          padding: 6px 12px;
+        }
+
+        .date-info {
+          font-size: 1.2rem;
+          top: 85vh;
+          padding: 6px 12px;
+          left: 50%;
+          transform: translateX(-50%);
+        }
+
+        .corner-decoration {
+          width: 50px;
+          height: 50px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="main-container" id="mainPage">
+      <div class="corner-decoration top-left"></div>
+      <div class="corner-decoration top-right"></div>
+      <div class="corner-decoration bottom-left"></div>
+      <div class="corner-decoration bottom-right"></div>
+      <div class="left-section">
+        <h1 class="section-title">PUBLIC</h1>
+        <h2 class="section-subtitle">SPEAKING</h2>
+      </div>
+      <div class="right-section">
+        <h1 class="section-title">PYTHON</h1>
+        <h2 class="section-subtitle">BASICS</h2>
+      </div>
+      <div class="register-btn-container">
+        <button class="register-btn" onclick="showRegistration()">
+          REGISTER
+        </button>
+        <h1 class="iste-title">ISTE CEAL Presents</h1>
+      </div>
+      <div class="date-info">13th SEPT</div>
+    </div>
+    <div class="registration-page" id="registrationPage">
+      <button class="back-btn" onclick="showMainPage()">← Back to Main</button>
+      <div class="form-container">
+        <h2 class="form-title">Event Registration</h2>
+        <div class="info-box">
+          <h3>📧 Registration Method</h3>
+          <p>
+            Your registration details will be sent directly to our email. You'll
+            receive a confirmation email within 24 hours with further
+            instructions.
+          </p>
+        </div>
+
+        <!-- Formspree Form - Replace YOUR_FORM_ID with your actual Formspree form ID -->
+        <form
+          action="https://formspree.io/f/xzzayyar"
+          method="POST"
+          id="registrationForm"
+        >
+          <input
+            type="hidden"
+            name="_subject"
+            value="New Event Registration - Public Speaking & Python Basics"
+          />
+          <input type="hidden" name="_next" value="#success" />
+          <input type="hidden" name="_captcha" value="false" />
+          <div class="form-group">
+            <label for="name">Full Name *</label>
+            <input type="text" id="name" name="name" required />
+          </div>
+          <div class="form-group">
+            <label for="email">Email Address *</label>
+            <input type="email" id="email" name="_replyto" required />
+          </div>
+          <div class="form-group">
+            <label for="phone">Phone Number *</label>
+            <input type="tel" id="phone" name="phone" required />
+          </div>
+          <div class="membership-section">
+            <div class="form-group">
+              <label for="isteMembership">Do you have ISTE Membership? *</label>
+              <select
+                id="isteMembership"
+                name="iste_membership"
+                required
+                onchange="toggleMembershipFields()"
+              >
+                <option value="">Select an option</option>
+                <option value="yes">Yes, I have ISTE Membership</option>
+                <option value="no">No, I don't have ISTE Membership</option>
+              </select>
+            </div>
+            <div
+              class="form-group"
+              id="membershipIdField"
+              style="display: none"
+            >
+              <label for="membershipId">ISTE Membership ID *</label>
+              <input type="text" id="membershipId" name="membership_id" />
+            </div>
+
+            <div class="form-group" id="firstYearField" style="display: none">
+              <label for="firstYear">Are you a first year student? *</label>
+              <select
+                id="firstYear"
+                name="first_year_student"
+                onchange="toggleMembershipId()"
+              >
+                <option value="">Select an option</option>
+                <option value="yes">Yes, I am a first year student</option>
+                <option value="no">No, I am not a first year student</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="payment-section" id="paymentSection">
+            <img class="payment-icon" src="sidqr.jpg" alt="Payment Icon" />
+            <p style="margin-bottom: 1rem; font: 16px/1.5 Arial, sans-serif">
+              Name - Sidharth A <br />UPI Handle - 7306729356@ptsbi
+            </p>
+            <h3 style="color: #ff3366; font: 20px/1.5 Arial, sans-serif">
+              <b>Payment Required</b>
+            </h3>
+            <p
+              style="
+                margin-bottom: 1rem;
+                opacity: 0.8;
+                font: 16px/1.5 Arial, sans-serif;
+              "
+            >
+              Since you do not have an ISTE membership, a payment is required to
+              complete your registration.
+            </p>
+            <div class="instructions">
+              <strong>Instructions:</strong><br />
+              1. Pay a sum of ₹50 via UPI to the above given handle.<br />
+              2. Upload your payment receipt image to Google Drive.<br />
+              3. Set the file access to "Anyone with the link" (public
+              access).<br />
+              4. Copy the shareable link and paste it in the field below.
+            </div>
+            <div class="form-group">
+              <label for="paymentLink"
+                >Payment Receipt Google Drive Link *</label
+              >
+              <input
+                type="url"
+                id="paymentLink"
+                name="payment_receipt_link"
+                placeholder="Paste your public Google Drive link here"
+                required
+              />
+            </div>
+          </div>
+
+          <!-- Additional hidden fields -->
+          <input type="hidden" name="registration_date" id="registrationDate" />
+          <input
+            type="hidden"
+            name="event_name"
+            value="Public Speaking & Python Basics - Sept 13, 2025"
+          />
+
+          <button type="submit" class="submit-btn" id="submitBtn">
+            Complete Registration
+          </button>
+
+          <div class="loading-spinner" id="loadingSpinner"></div>
+        </form>
+
+        <div class="success-message" id="successMessage">
+          <h3>🎉 Registration Submitted!</h3>
+          <p>
+            Thank you for registering! Your registration has been sent
+            successfully. You will receive a confirmation email within 24 hours
+            with further details about the event.
+          </p>
+        </div>
+        <div class="error-message" id="errorMessage">
+          <h3>❌ Registration Failed</h3>
+          <p id="errorText">
+            Something went wrong. Please try again or contact support directly.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      function showRegistration() {
+        document.getElementById("mainPage").style.display = "none";
+        document.getElementById("registrationPage").style.display = "block";
+        document.getElementById("registrationDate").value =
+          new Date().toISOString();
+      }
+      function showMainPage() {
+        document.getElementById("mainPage").style.display = "flex";
+        document.getElementById("registrationPage").style.display = "none";
+        resetForm();
+      }
+
+      function toggleMembershipId() {
+        const firstYear = document.getElementById("firstYear").value;
+        const membershipIdField = document.getElementById("membershipIdField");
+        const membershipIdInput = document.getElementById("membershipId");
+
+        if (firstYear === "yes") {
+          membershipIdField.style.display = "none";
+          membershipIdInput.required = false;
+          membershipIdInput.value = "";
+        } else if (firstYear === "no") {
+          membershipIdField.style.display = "block";
+          membershipIdInput.required = true;
+        } else {
+          membershipIdField.style.display = "none";
+          membershipIdInput.required = false;
+        }
+      }
+
+      function resetForm() {
+        document.getElementById("registrationForm").reset();
+        document.getElementById("membershipIdField").style.display = "none";
+        document.getElementById("firstYearField").style.display = "none";
+        document.getElementById("paymentSection").style.display = "none";
+        document.getElementById("successMessage").style.display = "none";
+        document.getElementById("errorMessage").style.display = "none";
+        document.getElementById("loadingSpinner").style.display = "none";
+        document.getElementById("registrationForm").style.display = "block";
+
+        const submitBtn = document.getElementById("submitBtn");
+        submitBtn.textContent = "Complete Registration";
+        submitBtn.disabled = false;
+      }
+      function toggleMembershipFields() {
+        const membership = document.getElementById("isteMembership").value;
+        const membershipIdField = document.getElementById("membershipIdField");
+        const firstYearField = document.getElementById("firstYearField");
+        const paymentSection = document.getElementById("paymentSection");
+        const membershipIdInput = document.getElementById("membershipId");
+        const firstYearInput = document.getElementById("firstYear");
+        const paymentLinkInput = document.getElementById("paymentLink");
+
+        if (membership === "yes") {
+          membershipIdField.style.display = "none";
+          firstYearField.style.display = "block";
+          paymentSection.style.display = "none";
+          firstYearInput.required = true;
+          paymentLinkInput.required = false;
+          membershipIdInput.required = false;
+          firstYearInput.value = "";
+        } else if (membership === "no") {
+          membershipIdField.style.display = "none";
+          firstYearField.style.display = "none";
+          paymentSection.style.display = "block";
+          membershipIdInput.required = false;
+          firstYearInput.required = false;
+          paymentLinkInput.required = true;
+        } else {
+          membershipIdField.style.display = "none";
+          firstYearField.style.display = "none";
+          paymentSection.style.display = "none";
+          membershipIdInput.required = false;
+          firstYearInput.required = false;
+          paymentLinkInput.required = false;
+        }
+      }
+      document
+        .getElementById("registrationForm")
+        .addEventListener("submit", function (e) {
+          const submitBtn = document.getElementById("submitBtn");
+          const loadingSpinner = document.getElementById("loadingSpinner");
+          submitBtn.textContent = "Sending Registration...";
+          submitBtn.disabled = true;
+          loadingSpinner.style.display = "block";
+        });
+      window.addEventListener("load", function () {
+        if (window.location.hash === "#success") {
+          showRegistration();
+          document.getElementById("registrationForm").style.display = "none";
+          document.getElementById("successMessage").style.display = "block";
+        }
+      });
+      setInterval(() => {
+        const titles = document.querySelectorAll(".section-title");
+        titles.forEach((title) => {
+          if (Math.random() < 0.1) {
+            title.style.textShadow = `
+              ${Math.random() * 10 - 5}px 0 #ff3366,
+              ${Math.random() * 10 - 5}px 0 #0066ff
+            `;
+            setTimeout(() => {
+              title.style.textShadow = "0 0 20px rgba(255, 255, 255, 0.5)";
+            }, 100);
+          }
+        });
+      }, 2000);
+    </script>
+    <a
+      class="developer-watermark"
+      href="https://www.linkedin.com/in/sreehari-s1911/"
+      target="_blank"
+      >Made by UrbanXtreme</a
+    >
+  </body>
 </html>

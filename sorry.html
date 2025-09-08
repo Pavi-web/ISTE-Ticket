@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registration Closed</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: #fff;
+      padding: 20px;
+    }
+
+    .closed-container {
+      background: linear-gradient(135deg, #dc2626, #b91c1c);
+      padding: 40px;
+      border-radius: 15px;
+      box-shadow: 0 0 40px rgba(220, 53, 69, 0.7);
+      max-width: 600px;
+      width: 90%;
+      animation: shake 0.6s ease-in-out;
+    }
+
+    .closed-container h1 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5);
+    }
+
+    .closed-container p {
+      font-size: 1.2rem;
+      margin-bottom: 10px;
+      line-height: 1.6;
+    }
+
+    .highlight {
+      font-size: 1.3rem;
+      font-weight: bold;
+      background: rgba(255, 255, 255, 0.2);
+      padding: 12px 20px;
+      border-radius: 10px;
+      border: 2px dashed rgba(255, 255, 255, 0.6);
+      display: inline-block;
+      margin-top: 15px;
+    }
+
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      20%, 60% { transform: translateX(-10px); }
+      40%, 80% { transform: translateX(10px); }
+    }
+
+    @media (max-width: 600px) {
+      .closed-container h1 {
+        font-size: 2rem;
+      }
+      .closed-container p {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="closed-container">
+    <h1>🚫 Registration Closed for Today</h1>
+    <p>We are not accepting registrations at this moment.</p>
+    <p class="highlight">Reopens Tomorrow at 9:00 AM</p>
+  </div>
+</body>
+</html>
